@@ -1,15 +1,13 @@
+import 'dotenv/config'
 import AWS from 'aws-sdk';
 import fs from 'fs';
-import archiver from 'archiver';
-import { createReadStream, createWriteStream } from 'fs';
-import { pipeline } from 'stream';
-import { promisify } from 'util';
-
-// Promisify the pipeline function for use with async/await
-const pipelineAsync = promisify(pipeline);
 
 // Configure AWS
-AWS.config.update({ region: 'us-east-1' });
+AWS.config.update({ 
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: 'us-east-1' 
+});
 
 // Create a Lambda client
 const lambda = new AWS.Lambda();
