@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import AWS from 'aws-sdk';
 import fs from 'fs';
+import AdmZip from 'adm-zip';
 
 // Configure AWS
 AWS.config.update({ 
@@ -12,7 +13,6 @@ AWS.config.update({
 // Create a Lambda client
 const lambda = new AWS.Lambda();
 
-import AdmZip from 'adm-zip';
 
 const zipCurrentDirectory = async (sourceDir, outputFilePath) => {
     const zip = new AdmZip();
